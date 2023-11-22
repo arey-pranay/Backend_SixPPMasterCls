@@ -1,2 +1,49 @@
 Backend Engineer has to create seperate APIs for each task, Like one for Creating, One for Reading, One for Updating, etc etc. And also authentication.
 Backend has Servers, Database and APIs.
+
+We can also get the route by taking req.url in
+const http = require("https"); 
+http.createServer((req,res)=>{
+  if(req.url==="contact"){
+    alert("Contact Page)
+  }
+})
+
+earlier,
+in secondFilee.js
+  const a = 10;
+  module.exports = a
+in index.js
+  const a = require("./secondFilee")
+
+nowadays modern,
+in secondFilee.js
+  const a =10;
+  export default a;
+in index.js 
+  import a from "./secondFilee.js"
+
+earlier "commonjs" type was used for transferring data, and in that we use module.exports and require("")
+But in Modern JS and its frontend frameworks we often use the "module" type where we write export and import, 
+and to achieve that in backend, edit the package.json and write "type": "module"
+
+for more other exports, you need to export {b,c} as you can not make more than 1 default export for a file 
+and while importing, you need to import {b,c}. 
+If it's not default export then you need to have the same name while importing because they are stored like that in system or/ envrm
+
+there are 4 methods
+Post, Get, Put, Delete for CRUD opn respctvly
+
+import express from "express"
+const app = express();
+
+app.get("/contact",(req,res)=>{
+  res.json({
+    id: 1,
+    page: "contactPages"
+  })
+})
+
+you can also import path from "path"
+and then app.use(express.static(path.join(path.resolve(),"additional route")))
+
