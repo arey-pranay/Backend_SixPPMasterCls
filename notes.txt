@@ -1,0 +1,2 @@
+Backend Engineer has to create seperate APIs for each task, Like one for Creating, One for Reading, One for Updating, etc etc. And also authentication.
+Backend has Servers, Database and APIs.
