@@ -47,3 +47,47 @@ app.get("/contact",(req,res)=>{
 you can also import path from "path"
 and then app.use(express.static(path.join(path.resolve(),"additional route")))
 
+Creating frontend with node.js
+We use ejs for this, it is similar to HTML but it has the power of using and creating variables too.
+
+Databases
+
+We send data from our backend to one of the collections of our database. The entry of one data is called Document.
+Mongoose is used to connect mongodb and node.js
+A collection is called a model in code and
+A document is called a schema. It represents the comprising unit of a model or collection.
+
+
+mongoose.connect("mongodb://127.0.0.1:27017",{
+  dbName:"backendlearning"
+}).then(()=>{console.log("Database Connected")}).catch((err)=>{console.log(err)})
+(get this data from MongoDB atlas)
+
+const msgSchema = new mongoose.Schema({
+  name: String,
+  email: String
+})
+
+const Messages = mongoose.Model("Messages",msgSchema)
+
+app.get("/add",async (req,res)=>{
+  await Messages.create({name: "Pranay", email: "pranayparikh2004@gmail.com"})
+})
+
+to work with cookies, we use cookie-parser and app.use(cookieParser());
+
+We use the next when we want to go the next handler. There can be multiple handlers and we can create middlewares to to multiple things on a route or smthng
+app.get("/", isAuthenticated, (req,res)=>{
+  res.render("logout")
+})
+const isAuthenticated = (req,res,next)=>{
+  const {token} = req.cookies;
+  if(token){
+    next();
+  }else{
+    res.render(login")
+  }
+}
+
+we use jsonwebtoken 
+const token = jwt.sign({_id:user._id},"secretrandomm")
